@@ -8,7 +8,7 @@
       "type": "wokwi-photoresistor-sensor",
       "id": "wokwi-photoresistor-sensor-0",
       "top": 60.8,
-      "left": -191.2,
+      "left": -220,
       "attrs": {}
     },
     { "type": "board-ssd1306", "id": "board-ssd1306-0", "top": 262.34, "left": 0.23, "attrs": {} },
@@ -37,9 +37,9 @@
     [ "wokwi-photoresistor-sensor-0:GND", "pico:GND.1", "black", [ "h9.6", "v-58" ] ],
     [ "board-ssd1306-0:SCL", "pico:GP5", "green", [ "v-57.6", "h-66.9", "v-140.75" ] ],
     [ "board-ssd1306-0:SDA", "pico:GP4", "green", [ "v-67.2", "h-95.93", "v-140.75" ] ],
-    [ "wokwi-mpu6050-0:SDA", "pico:GP22", "green", [ "h0" ] ],
-    [ "wokwi-mpu6050-0:SCL", "pico:GP26", "green", [ "h0" ] ],
-    [ "wokwi-photoresistor-sensor-0:DO", "pico:GP6", "green", [ "h0" ] ]
+    [ "wokwi-photoresistor-sensor-0:DO", "pico:GP6", "green", [ "h0" ] ],
+    [ "wokwi-mpu6050-0:SDA", "pico:GP4", "green", [ "h-19.2", "v-124.88", "h-115.2", "v70.45" ] ],
+    [ "pico:GP5", "wokwi-mpu6050-0:SCL", "green", [ "h-25.25", "v-99.25", "h134.4", "v134.4" ] ]
   ],
   "dependencies": {}
 }
