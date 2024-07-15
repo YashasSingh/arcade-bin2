@@ -15,8 +15,8 @@
     {
       "type": "wokwi-mpu6050",
       "id": "wokwi-mpu6050-0",
-      "top": 89.62,
-      "left": 107.08,
+      "top": 89.38,
+      "left": 108.52,
       "rotate": 270,
       "attrs": {}
     }
