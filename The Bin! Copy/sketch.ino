@@ -34,9 +34,9 @@ void setup() {
   Serial1.println("MPU6050 initialized");
 
   // Initialize the OLED display
-  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3C for 128x64
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3C for 128x64
     Serial1.println(F("SSD1306 allocation failed"));
-    for(;;); // Don't proceed, loop forever
+    for (;;) ; // Don't proceed, loop forever
   }
   display.display();
   delay(2000); // Pause for 2 seconds
@@ -72,11 +72,15 @@ void loop() {
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0, 0);
   display.println("MPU6050 Data:");
-  display.print("Accel X: "); display.println(accel_event.acceleration.x);
-  display.print("Accel Y: "); display.println(accel_event.acceleration.y);
-  display.print("Accel Z: "); display.println(accel_event.acceleration.z);
+  display.print("Accel X: ");
+  display.println(accel_event.acceleration.x);
+  display.print("Accel Y: ");
+  display.println(accel_event.acceleration.y);
+  display.print("Accel Z: ");
+  display.println(accel_event.acceleration.z);
   display.println();
-  display.print("LDR: "); display.println(ldrValue);
+  display.print("LDR: ");
+  display.println(ldrValue);
   display.display();
 
   delay(500);

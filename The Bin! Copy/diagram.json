@@ -39,7 +39,13 @@
     [ "board-ssd1306-0:SDA", "pico:GP4", "green", [ "v-67.2", "h-95.93", "v-140.75" ] ],
     [ "wokwi-photoresistor-sensor-0:DO", "pico:GP6", "green", [ "h0" ] ],
     [ "wokwi-mpu6050-0:SDA", "pico:GP4", "green", [ "h-19.2", "v-124.88", "h-115.2", "v70.45" ] ],
-    [ "pico:GP5", "wokwi-mpu6050-0:SCL", "green", [ "h-25.25", "v-99.25", "h134.4", "v134.4" ] ]
+    [ "pico:GP5", "wokwi-mpu6050-0:SCL", "green", [ "h-25.25", "v-99.25", "h134.4", "v134.4" ] ],
+    [
+      "wokwi-photoresistor-sensor-0:AO",
+      "pico:GP26",
+      "green",
+      [ "h0", "v114.5", "h134.4", "v-124.8", "h-9.6" ]
+    ]
   ],
   "dependencies": {}
 }
