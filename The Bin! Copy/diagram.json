@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "author": "The Bin - Hack Club",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-pi-pico-w", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "wokwi-photoresistor-sensor-0",
+      "top": 60.8,
+      "left": -191.2,
+      "attrs": {}
+    },
+    { "type": "board-ssd1306", "id": "board-ssd1306-0", "top": 262.34, "left": 0.23, "attrs": {} },
+    {
+      "type": "wokwi-mpu6050",
+      "id": "wokwi-mpu6050-0",
+      "top": 89.62,
+      "left": 107.08,
+      "rotate": 270,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [
+      "wokwi-photoresistor-sensor-0:VCC",
+      "pico:VBUS",
+      "red",
+      [ "h0", "v-86.4", "h86.4", "v9.6" ]
+    ],
+    [ "wokwi-mpu6050-0:VCC", "pico:VBUS", "red", [ "h-8.16", "v-67.52" ] ],
+    [ "board-ssd1306-0:VCC", "pico:VBUS", "red", [ "v-28.8", "h172.95", "v-220.8" ] ],
+    [ "wokwi-mpu6050-0:GND", "pico:GND.7", "black", [ "h-27.36", "v-19.52" ] ],
+    [ "board-ssd1306-0:GND", "pico:GND.4", "black", [ "v-48", "h-48", "v-38.4" ] ],
+    [ "wokwi-photoresistor-sensor-0:GND", "pico:GND.1", "black", [ "h9.6", "v-58" ] ],
+    [ "board-ssd1306-0:SCL", "pico:GP5", "green", [ "v-57.6", "h-66.9", "v-140.75" ] ],
+    [ "board-ssd1306-0:SDA", "pico:GP4", "green", [ "v-67.2", "h-95.93", "v-140.75" ] ],
+    [ "wokwi-mpu6050-0:SDA", "pico:GP22", "green", [ "h0" ] ],
+    [ "wokwi-mpu6050-0:SCL", "pico:GP26", "green", [ "h0" ] ],
+    [ "wokwi-photoresistor-sensor-0:DO", "pico:GP6", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
