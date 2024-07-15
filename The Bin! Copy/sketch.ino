@@ -13,6 +13,9 @@ Adafruit_MPU6050 mpu;
 #define OLED_RESET -1
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+// Define the analog pin for the LDR sensor
+#define LDR_PIN 26
+
 sensors_event_t accel_event, gyro_event, temp_event;
 
 void setup() {
@@ -48,6 +51,9 @@ void loop() {
   mpu.getGyroSensor()->getEvent(&gyro_event);
   mpu.getTemperatureSensor()->getEvent(&temp_event);
 
+  // Read the LDR sensor value
+  int ldrValue = analogRead(LDR_PIN);
+
   // Print sensor data to serial
   Serial1.print("[");
   Serial1.print(millis());
@@ -57,7 +63,8 @@ void loop() {
   Serial1.print(accel_event.acceleration.y);
   Serial1.print(", Z: ");
   Serial1.print(accel_event.acceleration.z);
-  Serial1.println(" m/s^2");
+  Serial1.print(" m/s^2, LDR: ");
+  Serial1.println(ldrValue);
 
   // Display sensor data on OLED
   display.clearDisplay();
@@ -68,6 +75,8 @@ void loop() {
   display.print("Accel X: "); display.println(accel_event.acceleration.x);
   display.print("Accel Y: "); display.println(accel_event.acceleration.y);
   display.print("Accel Z: "); display.println(accel_event.acceleration.z);
+  display.println();
+  display.print("LDR: "); display.println(ldrValue);
   display.display();
 
   delay(500);
