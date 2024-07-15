@@ -65,8 +65,11 @@ void loop() {
   speedY += accel_event.acceleration.y * deltaTime;
   speedZ += accel_event.acceleration.z * deltaTime;
 
-  // Calculate the resultant speed
-  float speed = sqrt(speedX * speedX + speedY * speedY + speedZ * speedZ);
+  // Calculate the resultant speed in m/s
+  float speed_ms = sqrt(speedX * speedX + speedY * speedY + speedZ * speedZ);
+
+  // Convert speed to mph (1 m/s = 2.23694 mph)
+  float speed_mph = speed_ms * 2.23694;
 
   // Read the LDR sensor value
   int ldrValue = analogRead(LDR_PIN);
@@ -75,20 +78,35 @@ void loop() {
   Serial1.print("[");
   Serial1.print(millis());
   Serial1.print("] Speed: ");
-  Serial1.print(speed);
-  Serial1.print(" m/s, LDR: ");
+  Serial1.print(speed_mph);
+  Serial1.print(" mph, LDR: ");
   Serial1.println(ldrValue);
 
-  // Display sensor data on OLED
+  // Display sensor data on OLED with animation
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0, 0);
   display.println("Speedometer");
-  display.print("Speed: "); display.print(speed); display.println(" m/s");
-  display.println();
-  display.print("LDR: "); display.println(ldrValue);
+  display.setTextSize(2);
+  display.print("Speed: ");
+  display.print(speed_mph, 1); // Print speed with 1 decimal place
+  display.println(" mph");
+
+  // Draw a simple speedometer animation
+  int centerX = SCREEN_WIDTH / 2;
+  int centerY = SCREEN_HEIGHT - 10;
+  int radius = 20;
+  display.drawCircle(centerX, centerY, radius, SSD1306_WHITE);
+
+  // Calculate the needle angle (map speed to angle, max speed 100 mph)
+  float angle = map(speed_mph, 0, 100, -90, 90);
+  float radian = angle * PI / 180;
+  int needleX = centerX + radius * cos(radian);
+  int needleY = centerY - radius * sin(radian);
+  display.drawLine(centerX, centerY, needleX, needleY, SSD1306_WHITE);
+
   display.display();
 
-  delay(500);
+  delay(100);
 }
