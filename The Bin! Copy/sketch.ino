@@ -74,6 +74,11 @@ void loop() {
   // Read the LDR sensor value
   int ldrValue = analogRead(LDR_PIN);
 
+  // Adjust OLED brightness based on LDR value
+  int brightness = map(ldrValue, 0, 1023, 0, 255); // Map LDR value to brightness
+  display.ssd1306_command(SSD1306_SETCONTRAST); // Set contrast command
+  display.ssd1306_command(brightness); // Set the brightness level
+
   // Print sensor data to serial
   Serial1.print("[");
   Serial1.print(millis());
