@@ -1,4 +1,6 @@
 # Raspberry Pi Pico W Speedometer with OLED Display and Light Sensor
+![Screenshot 2024-07-16 141611](https://github.com/user-attachments/assets/fb24f107-6a58-44b3-aed3-43d1eb066df6)
+
 
 This project is a speedometer application for the Raspberry Pi Pico W, utilizing the MPU6050 accelerometer/gyroscope, an SSD1306 OLED display, and an LDR (Light Dependent Resistor) to adjust the screen brightness.
 
